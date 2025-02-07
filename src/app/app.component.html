@@ -1,0 +1,15 @@
+<main>
+  <ul id="users">
+    @for (user of allUsers; track user.id){
+    <li>
+      <app-user (select)="onSelectUser($event)" [user]="user" />
+    </li>
+    }
+  </ul>
+</main>
+<section *ngIf="selectedUserId; else fallback" id="tasks">
+  <app-task [taskDetail]="taskDetail" [userName]="userDetail.name" />
+</section>
+<ng-template #fallback>
+  <div>Click on user to view their task</div>
+</ng-template>
